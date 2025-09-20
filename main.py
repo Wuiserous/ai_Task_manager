@@ -8,7 +8,7 @@ import time
 
 # Load .env file
 load_dotenv()
-
+gemini_api_key = st.secrets["GEMINI_API_KEY"]
 
 # --- Configuration ---
 # Configure the Gemini API with your key.
@@ -16,7 +16,7 @@ load_dotenv()
 # For better security, use Streamlit's secrets management for deployment.
 try:
     # It's recommended to load API keys from a secure location rather than hardcoding
-    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+    GEMINI_API_KEY = gemini_api_key
 
     client = genai.Client(api_key=GEMINI_API_KEY)
     chat = client.chats.create(model='gemini-2.5-flash')
