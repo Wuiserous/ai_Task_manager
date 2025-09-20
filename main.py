@@ -2,12 +2,7 @@ import streamlit as st
 from google import genai
 from google.genai import types
 import json
-import os
-from dotenv import load_dotenv
-import time
 
-# Load .env file
-load_dotenv()
 gemini_api_key = st.secrets["GEMINI_API_KEY"]
 
 # --- Configuration ---
