@@ -16,9 +16,8 @@ gemini_api_key = st.secrets["GEMINI_API_KEY"]
 # For better security, use Streamlit's secrets management for deployment.
 try:
     # It's recommended to load API keys from a secure location rather than hardcoding
-    GEMINI_API_KEY = gemini_api_key
 
-    client = genai.Client(api_key=GEMINI_API_KEY)
+    client = genai.Client(api_key=gemini_api_key)
     chat = client.chats.create(model='gemini-2.5-flash')
 except Exception as e:
     st.error(f"Error configuring Gemini API: {e}")
