@@ -2,7 +2,12 @@ import streamlit as st
 from google import genai
 from google.genai import types
 import json
+import os
+from dotenv import load_dotenv
+import time
 
+# Load .env file
+load_dotenv()
 gemini_api_key = st.secrets["GEMINI_API_KEY"]
 
 # --- Configuration ---
@@ -11,8 +16,9 @@ gemini_api_key = st.secrets["GEMINI_API_KEY"]
 # For better security, use Streamlit's secrets management for deployment.
 try:
     # It's recommended to load API keys from a secure location rather than hardcoding
+    GEMINI_API_KEY = gemini_api_key
 
-    client = genai.Client(api_key=gemini_api_key)
+    client = genai.Client(api_key=GEMINI_API_KEY)
     chat = client.chats.create(model='gemini-2.5-flash')
 except Exception as e:
     st.error(f"Error configuring Gemini API: {e}")
